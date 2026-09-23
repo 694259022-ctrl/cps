@@ -1,21 +1,55 @@
 void main() {
     int balance = 10000;
-    IO.print("Enter your PIN: ");
-    int PIN = Integer.parseInt(IO.readln());
-    if (PIN = 1234 ) {
-        IO.println("===== ATM MENU =====");
+    IO.print("Enter your PIN:  ");
+    int password = Integer.parseInt(IO.readln());
+
+    if (password == 1234) {
+        IO.println("===== ATM MENU=====");
         IO.println("1. Check balance");
         IO.println("2. Withdraw money");
         IO.println("3. Deposit money");
         IO.println("4. Exit");
 
-        IO.println("Select an option: ");
+        IO.print("Select an option: ");
         int menu = Integer.parseInt(IO.readln());
-        if (menu == 1) {
-            IO.println("Enter the withdrawal amount: ");
-        } 
 
-        
+        if (menu == 1) {
+            IO.println("Your balance is 10000.0 baht");
+        } else {
+            if (menu == 2) {
+                IO.print("Enter the withdrawal amount:");
+                int amount = Integer.parseInt(IO.readln());
+                if (amount <= 0) {
+                    IO.println("The amount must be greater be greater than 0.");
+                } else {
+                    if (amount <= balance) {
+                        balance = balance - amount;
+                        IO.println("Withdrawal successful");
+                        IO.println("Remaining balance " + balance + " baht");
+                    } else {
+                        IO.println("Insufficent funds.");
+                    }
+                }
+            } else {
+                if (menu == 3) {
+                    IO.print("Enter the Deposit amount:");
+                    int amount = Integer.parseInt(IO.readln());
+                    if (amount > 0) {
+                        balance = balance + amount;
+                        IO.println("Deposit successful.");
+                        IO.println("Updated balance " + balance + " baht.");
+                    } else {
+                        IO.println("The amount must be greater than 0.");
+                    }
+                } else {
+                    if (menu == 4) {
+                        IO.println("Thank you for using the ATM.");
+                    } else {
+                        IO.println("Invaild option.");
+                    }
+                }
+            }
+        }
     }
+
 }
-    
